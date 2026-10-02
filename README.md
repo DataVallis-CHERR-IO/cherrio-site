@@ -36,10 +36,11 @@ pnpm typecheck && pnpm test && pnpm build
 Push to `main` → GitHub Actions (`deploy.yml`): typecheck + tests → image to GHCR → `kamal deploy` → smoke tests on https://cherr.io.
 Kamal service `cherrio-site` (256 MB), same host and kamal-proxy as the platform. TLS by Let's Encrypt via kamal-proxy.
 
-Repository secrets: `SSH_PRIVATE_KEY` (CI-only key for `deploy@`), `SSH_KNOWN_HOSTS`, `KAMAL_REGISTRY_USERNAME`,
-`KAMAL_REGISTRY_PASSWORD` (GitHub token with `read:packages`), `KLAVIYO_PRIVATE_KEY`, `KLAVIYO_LIST_ID`.
+Repository secrets: `SSH_PRIVATE_KEY` (CI-only key `cherrio-site CI` for `deploy@`), `SSH_KNOWN_HOSTS`,
+`KLAVIYO_PRIVATE_KEY`, `KLAVIYO_LIST_ID`. The registry login uses the job's own `GITHUB_TOKEN` — no personal token.
 
-Rollback: `kamal rollback sha-<previous7>` (with the secrets exported).
+Rollback: re-run the Deploy workflow of an earlier commit (Actions → Deploy → that run → Re-run), or locally
+`kamal rollback sha-<previous7>` with `KAMAL_REGISTRY_USERNAME`/`KAMAL_REGISTRY_PASSWORD` (a token with `read:packages`) exported.
 
 ---
 Operated by Data Vallis d.o.o., Maribor, Slovenia.

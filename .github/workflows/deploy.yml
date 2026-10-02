@@ -69,8 +69,10 @@ jobs:
 
       - name: Deploy with Kamal
         env:
-          KAMAL_REGISTRY_USERNAME: ${{ secrets.KAMAL_REGISTRY_USERNAME }}
-          KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
+          # The job's own GITHUB_TOKEN pulls the image it just pushed (valid for the length of the job;
+          # Kamal logs in again on every deploy/rollback). No personal access token needed.
+          KAMAL_REGISTRY_USERNAME: ${{ github.actor }}
+          KAMAL_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
           KLAVIYO_PRIVATE_KEY: ${{ secrets.KLAVIYO_PRIVATE_KEY }}
           KLAVIYO_LIST_ID: ${{ secrets.KLAVIYO_LIST_ID }}
         run: kamal deploy --skip-push --version "${{ steps.meta.outputs.tag }}"
