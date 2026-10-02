@@ -38,7 +38,10 @@ jobs:
           KLAVIYO_LIST_ID: ""
         run: |
           if [ -n "${{ inputs.grep }}" ]; then
-            kamal app logs -n "${{ inputs.lines }}" --grep "${{ inputs.grep }}"
+            kamal app logs -n "${{ inputs.lines }}" --grep "${{ inputs.grep }}" > app.log 2>&1 || true
           else
-            kamal app logs -n "${{ inputs.lines }}"
+            kamal app logs -n "${{ inputs.lines }}" > app.log 2>&1 || true
           fi
+          cat app.log
+          # Also as annotations (readable through the API) with email addresses masked.
+          sed -E 's/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/<email>/g' app.log | tail -n 40 | while IFS= read -r l; do echo "::notice::${l}"; done
