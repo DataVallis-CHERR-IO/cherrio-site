@@ -87,9 +87,6 @@ export function Footer() {
           </nav>
         </div>
         <div className="s-footer-bottom">
-          <span>
-            Operated by {SITE.operator}, {SITE.operatorAddress}
-          </span>
           <span className="s-mono">© {new Date().getFullYear()} CHERR.IO</span>
         </div>
       </div>
