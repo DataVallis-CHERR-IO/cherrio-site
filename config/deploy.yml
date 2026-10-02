@@ -1,0 +1,59 @@
+# Kamal 2 — cherr.io marketing site.
+# Shares the Hetzner host and kamal-proxy with the platform (cherrio-web-*),
+# under its own service name. The platform's prod app lives on app.cherr.io.
+#
+# Deployed by .github/workflows/deploy.yml on every push to main.
+# Manual: kamal deploy --skip-push --version sha-<7>   (secrets exported in the shell)
+
+service: cherrio-site
+image: datavallis-cherr-io/cherrio-site
+
+servers:
+  web:
+    hosts:
+      - 49.13.63.71
+    options:
+      memory: 256m
+
+proxy:
+  ssl: true
+  hosts:
+    - cherr.io
+    - www.cherr.io
+  app_port: 3000
+  response_timeout: 30
+  healthcheck:
+    path: /api/health
+    interval: 3
+    timeout: 3
+
+registry:
+  server: ghcr.io
+  username:
+    - KAMAL_REGISTRY_USERNAME
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+ssh:
+  user: deploy
+  keys_only: true
+
+builder:
+  arch: amd64
+  remote: false
+
+env:
+  clear:
+    NODE_ENV: production
+    SITE_URL: https://cherr.io
+  secret:
+    - KLAVIYO_PRIVATE_KEY
+    - KLAVIYO_LIST_ID
+
+retain_containers: 3
+
+logging:
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"

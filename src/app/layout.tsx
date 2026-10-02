@@ -1,0 +1,60 @@
+import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
+import "@/styles/tokens.css";
+import "@/styles/components.css";
+import "@/styles/site.css";
+import { Footer, Header } from "@/components/chrome";
+import { SITE, SITE_URL } from "@/lib/site";
+
+// Fonts ship with the app (src/fonts, OFL): no request to Google at build or run time (GDPR).
+const display = localFont({ src: "../fonts/archivo-black-latin-400-normal.woff2", weight: "400", display: "swap", variable: "--nf-display" });
+const sans = localFont({
+  src: [
+    { path: "../fonts/archivo-latin-400-normal.woff2", weight: "400" },
+    { path: "../fonts/archivo-latin-500-normal.woff2", weight: "500" },
+    { path: "../fonts/archivo-latin-700-normal.woff2", weight: "700" },
+    { path: "../fonts/archivo-latin-800-normal.woff2", weight: "800" },
+  ],
+  display: "swap",
+  variable: "--nf-sans",
+});
+const mono = localFont({
+  src: [
+    { path: "../fonts/ibm-plex-mono-latin-400-normal.woff2", weight: "400" },
+    { path: "../fonts/ibm-plex-mono-latin-500-normal.woff2", weight: "500" },
+  ],
+  display: "swap",
+  variable: "--nf-mono",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: { default: `${SITE.name} — ${SITE.tagline}`, template: `%s · ${SITE.name}` },
+  description: SITE.description,
+  applicationName: SITE.name,
+  openGraph: { type: "website", siteName: SITE.name, locale: "en_GB", url: SITE_URL },
+  twitter: { card: "summary_large_image", site: "@CherrioPlatform" },
+  alternates: { canonical: "/" },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#e3e3e3" },
+    { media: "(prefers-color-scheme: dark)", color: "#090c0d" },
+  ],
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
+      <body>
+        <a href="#main" className="s-skip">
+          Skip to content
+        </a>
+        <Header />
+        <main id="main">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}

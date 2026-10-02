@@ -1,0 +1,92 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-site
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  IMAGE: ghcr.io/datavallis-cherr-io/cherrio-site
+  HOST: cherr.io
+
+jobs:
+  deploy:
+    name: Check → Build → Deploy → Smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm test
+
+      - name: Set image tag
+        id: meta
+        run: echo "tag=sha-$(echo ${{ github.sha }} | head -c 7)" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ env.IMAGE }}:${{ steps.meta.outputs.tag }}
+          labels: service=cherrio-site
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: NEXT_PUBLIC_GIT_SHA=${{ github.sha }}
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+      - run: gem install kamal -v 2.12.0 --no-document
+
+      - name: Deploy with Kamal
+        env:
+          KAMAL_REGISTRY_USERNAME: ${{ secrets.KAMAL_REGISTRY_USERNAME }}
+          KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
+          KLAVIYO_PRIVATE_KEY: ${{ secrets.KLAVIYO_PRIVATE_KEY }}
+          KLAVIYO_LIST_ID: ${{ secrets.KLAVIYO_LIST_ID }}
+        run: kamal deploy --skip-push --version "${{ steps.meta.outputs.tag }}"
+
+      - name: Smoke test
+        run: |
+          HEALTH=$(curl -sf --retry 10 --retry-delay 6 --retry-all-errors "https://${HOST}/api/health")
+          echo "$HEALTH"
+          echo "$HEALTH" | grep -q '"status":"ok"'
+          echo "$HEALTH" | grep -q '"sha":"${{ github.sha }}"'
+          for p in / /how-it-works /charity-market-cap /emergency-pool /charities /cherrions /faq /about /privacy /terms /sitemap.xml; do
+            curl -sf -o /dev/null "https://${HOST}${p}" && echo "200 ${p}"
+          done
+          test "$(curl -s -o /dev/null -w '%{http_code}' https://www.${HOST}/)" = "308"
+
+      - name: Klaviyo configured?
+        run: |
+          curl -sf "https://${HOST}/api/health" | grep -q '"klaviyo":true' \
+            || echo "::warning::KLAVIYO_PRIVATE_KEY / KLAVIYO_LIST_ID are not set — the waitlist form will return an error until they are."
