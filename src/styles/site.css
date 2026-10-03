@@ -9,13 +9,49 @@
   --band: var(--slate-900);
   --band-ink: var(--mist-100);
   --band-muted: var(--mist-300);
-  /* v1.1 tokens */
-  --cherry-50: #fff0f4;   /* tinted section band */
+  /* v1.1 brand tokens */
+  --cherry-50: #fff0f4;   /* tinted section band (light) */
   --cherry-100: #ffd9e4;  /* borders / hover on the tint */
   --success-700: #0b6b33; --success-50: #e2f4e9;  /* status only */
   --warning-700: #7a4f00; --warning-50: #fff1cc;  /* status only */
-  /* The website is light-only: section bands are designed for the light palette. */
-  color-scheme: light;
+  color-scheme: light dark;
+}
+
+/* ── Theme roles (brief §6). Light values here; dark values below. ───────── */
+:root {
+  --tint: var(--cherry-50);
+  --cherry-text: var(--cherry-700);        /* eyebrows, links, active nav, small cherry text */
+  --cherry-num: var(--cherry-700);         /* key numbers */
+  --cherry-text-raised: var(--cherry-700); /* small cherry text on raised surfaces */
+  --badge-success-bg: var(--success-700); --badge-success-fg: var(--white);
+  --badge-warning-bg: var(--warning-50);  --badge-warning-fg: var(--warning-700);
+  --badge-muted: var(--slate-500);
+}
+/* Dark role set: the whole page in dark mode, and the "dark" band in light mode. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --tint: #2a0812;
+    --cherry-text: var(--cherry-500);
+    --cherry-num: var(--cherry-500);
+    --cherry-text-raised: var(--mist-100);  /* #ff0052 on #2d393b is 3.1:1 — small text stays light */
+    --badge-success-bg: #4cc77f; --badge-success-fg: var(--slate-900);
+    --badge-warning-bg: #2e2208;  --badge-warning-fg: #f2b84b;
+    --badge-muted: var(--mist-300);
+  }
+}
+.s-tone-dark {
+  --surface: var(--slate-900); --surface-raised: var(--slate-700); --surface-sunken: var(--slate-700);
+  --ink: var(--mist-100); --ink-muted: var(--mist-300); --line: var(--mist-100); --line-soft: var(--slate-500);
+  --accent-text: var(--cherry-500); --focus: var(--cherry-500);
+  --shadow-hard: 6px 6px 0 0 #ff0052; --shadow-hard-sm: 3px 3px 0 0 #ff0052;
+  --cherry-text: var(--cherry-500); --cherry-num: var(--cherry-500); --cherry-text-raised: var(--mist-100);
+  --badge-success-bg: #4cc77f; --badge-success-fg: var(--slate-900);
+  --badge-warning-bg: #2e2208;  --badge-warning-fg: #f2b84b;
+  --badge-muted: var(--mist-300);
+}
+/* Raised surfaces: small cherry text switches to the raised-safe value (same in light, #e3e3e3 in dark). */
+.s-header, .s-tone-white, .s-box, .ch-card, .ch-trust, .ch-ledger-wrap, .s-table-wrap, .s-callout, .s-form-done, .s-menu-panel {
+  --cherry-text: var(--cherry-text-raised);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -224,78 +260,69 @@ h1, h2, h3, p { margin: 0; }
 
 /* ═══════════════ Design system v1.1 — wayfinding ═══════════════ */
 
-/* Header: 6px cherry bar on top, active item cherry-700 with a 3px cherry underline */
-.s-header { border-top: 6px solid var(--cherry-500); background: var(--white); }
+/* Header: 6px cherry bar on top, active item in cherry text with a 3px cherry underline */
+.s-header { border-top: 6px solid var(--cherry-500); background: var(--surface-raised); border-bottom-color: var(--line); }
 .s-navlink { padding: 6px 0; border-bottom: 3px solid transparent; }
-.s-navlink.is-active { color: var(--cherry-700); border-bottom-color: var(--cherry-500); }
-.s-navlink:hover { color: var(--cherry-700); }
+.s-navlink.is-active { color: var(--cherry-text); border-bottom-color: var(--cherry-500); }
+.s-navlink:hover { color: var(--cherry-text); }
 
-/* Eyebrow: cherry-700 uppercase label with a 22×6 cherry dash */
-.s-eyebrow { color: var(--cherry-700); display: inline-flex; align-items: center; gap: 10px; }
+/* Eyebrow: cherry uppercase label with a 22×6 cherry dash */
+.s-eyebrow { color: var(--cherry-text); display: inline-flex; align-items: center; gap: 10px; }
 .s-eyebrow::before { content: ""; width: 22px; height: 6px; background: var(--cherry-500); flex: 0 0 auto; }
 
 /* Section headings: Archivo Black 44/30, lh 1.05, 72×8 cherry bar underneath */
 .s-display-2 { font-size: 44px; line-height: 1.05; letter-spacing: -0.01em; }
-.s-display-2::after { content: ""; display: block; width: 72px; height: 8px; background: var(--cherry-500); margin-top: 18px; }
+.s-display-2::after, .s-display-cta::after { content: ""; display: block; width: 72px; height: 8px; background: var(--cherry-500); margin-top: 18px; }
 .s-pagehead-title { font-size: clamp(40px, 6vw, 72px); line-height: 1.02; }
-.s-display-cta::after { content: ""; display: block; width: 72px; height: 8px; background: var(--cherry-500); margin-top: 18px; }
 @media (max-width: 640px) {
   .s-display-2 { font-size: 30px; }
   .s-pagehead-title { font-size: 38px; }
 }
 
-/* Key numbers in cherry-700 */
-.ch-progress-raised, .ch-trust-score, .s-figure, .s-bignum, .s-score { color: var(--cherry-700); }
+/* Key numbers (all ≥ 24px, so cherry is allowed on raised cards in dark too) */
+.ch-progress-raised, .ch-trust-score, .s-figure, .s-bignum, .s-score { color: var(--cherry-num); }
+.s-score { font-size: 24px; }
 .ch-trust-score small { color: var(--ink-muted); }
 
-/* Links: cherry-700 with a cherry underline */
-main a:not(.ch-btn):not(.s-navlink) { color: var(--cherry-700); text-decoration-color: var(--cherry-500); }
-main a:not(.ch-btn):hover { color: var(--cherry-600); }
+/* Links: cherry text with a cherry underline */
+main a:not(.ch-btn):not(.s-navlink) { color: var(--cherry-text); text-decoration-color: var(--cherry-500); }
+main a:not(.ch-btn):not(.s-navlink):hover { color: var(--ink); }
 .ch-proof { text-decoration-color: var(--cherry-500); }
-.s-arrow-link { color: var(--cherry-700); }
-.s-inline-btn { color: var(--cherry-700); text-decoration-color: var(--cherry-500); }
+.s-inline-btn { color: var(--cherry-text); text-decoration-color: var(--cherry-500); }
+.s-inline-btn:hover { color: var(--ink); }
 
 /* Featured card: cherry hard shadow */
 .ch-card-featured, .s-box-featured { box-shadow: 6px 6px 0 0 var(--cherry-500); }
 
 /* Status chips v1.1 — glyph always kept */
-.ch-chip-success { background: var(--success-700); border-color: var(--success-700); color: var(--white); }
-.ch-chip-warning { background: var(--warning-50); border-color: var(--warning-700); color: var(--warning-700); }
-.ch-chip-muted { border-color: var(--slate-500); color: var(--slate-500); }
+.ch-chip-success { background: var(--badge-success-bg); border-color: var(--badge-success-bg); color: var(--badge-success-fg); }
+.ch-chip-warning { background: var(--badge-warning-bg); border-color: var(--badge-warning-fg); color: var(--badge-warning-fg); }
+.ch-chip-muted { border-color: var(--badge-muted); color: var(--badge-muted); }
 
 /* ═══════════════ Section rhythm ═══════════════
-   ground → cherry tint → white (ink rules) → dark (12px cherry left border on the block).
-   Never two equal backgrounds in a row. Only the background is full width. */
-.s-section { border-bottom: 0; }
-.s-tone-ground { background: var(--mist-100); }
-.s-tone-tint { background: var(--cherry-50); }
-.s-tone-white { background: var(--white); border-top: var(--border-bold) solid var(--slate-900); border-bottom: var(--border-bold) solid var(--slate-900); }
-.s-tone-dark { background: var(--slate-900); color: var(--mist-100); }
+   Light: ground → tint → white (ink rules) → dark (12px cherry left border on the block).
+   Dark:  ground → tint → raised (light rules) → ground framed with the 12px cherry border.
+   Never two equal bands in a row. Only the background is full width. */
+.s-section { border-bottom: 0; color: var(--ink); }
+.s-tone-ground { background: var(--surface); }
+.s-tone-tint { background: var(--tint); }
+.s-tone-white { background: var(--surface-raised); border-top: var(--border-bold) solid var(--line); border-bottom: var(--border-bold) solid var(--line); }
+.s-tone-dark { background: var(--surface); }
 .s-tone-dark > .s-wrap { border-left: 12px solid var(--cherry-500); padding-left: clamp(20px, 3vw, 40px); }
-.s-tone-white + .s-tone-white { border-top: 0; }
 
-/* Boxes: white on ground/tint, ground on white */
-.s-box { background: var(--white); }
-.s-tone-white .s-box { background: var(--mist-100); }
-.s-tone-tint .s-box { border-color: var(--slate-900); }
-
-/* Dark section: light text; components keep their white boxes with ink text */
-.s-tone-dark .s-muted, .s-tone-dark .s-aside, .s-tone-dark .ch-label.s-muted { color: var(--mist-300); }
-.s-tone-dark .s-eyebrow { color: var(--cherry-500); } /* cherry-700 is too dark on ink; cherry-500 on ink = 5.0:1 */
-.s-tone-dark .s-bignum, .s-tone-dark .s-score { color: var(--cherry-500); }
-.s-tone-dark .s-box, .s-tone-dark .ch-ms, .s-tone-dark .ch-vote, .s-tone-dark .ch-trust,
-.s-tone-dark .ch-card, .s-tone-dark .ch-ledger-wrap, .s-tone-dark .s-table-wrap, .s-tone-dark .s-callout { color: var(--ink); border-color: var(--mist-100); }
-.s-tone-dark .s-box p { color: var(--ink-muted); }
-main .s-tone-dark a.ch-proof, main .s-tone-dark a.s-arrow-link { color: var(--mist-100); }
-main .s-tone-dark a.ch-proof:hover, main .s-tone-dark a.s-arrow-link:hover { color: var(--cherry-500); }
-.s-tone-dark .ch-proof-mark { background: var(--cherry-500); color: var(--slate-900); }
-.s-tone-dark :focus-visible { outline-color: var(--cherry-500); }
-
-/* Promises strip lives on the tint: rules in ink */
-.s-tone-tint .s-promise { border-color: var(--slate-900); }
+/* Boxes: raised on ground/tint/dark bands, ground on the raised band */
+.s-box { background: var(--surface-raised); }
+.s-tone-white .s-box { background: var(--surface); }
+.s-tone-tint .s-promise { border-color: var(--line); }
+.ch-proof-mark { background: var(--ink); color: var(--surface); }
 
 /* CTA on the tint */
 .s-cta { border-bottom: 0; }
 
-/* Footer stays ink; keep a cherry rule above it */
+/* Footer: ink band in both themes, cherry rule above it */
 .s-footer { border-top: 6px solid var(--cherry-500); }
+/* Dark theme: the framed band sits on the same ground as its neighbours, so give it
+   quiet 3px rules (#2d393b) in addition to the 12px cherry frame. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .s-tone-dark { border-top: var(--border-bold) solid var(--slate-700); border-bottom: var(--border-bold) solid var(--slate-700); }
+}
