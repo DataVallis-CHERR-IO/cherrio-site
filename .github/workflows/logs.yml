@@ -1,6 +1,7 @@
 name: Logs
 
-# Manual: Actions → Logs → Run workflow. Prints the last app log lines (no secrets are logged by the app).
+# Manual: Actions → Logs → Run workflow. The repo is PUBLIC, so only masked lines are printed
+# (email addresses replaced); never print the raw log.
 on:
   workflow_dispatch:
     inputs:
@@ -42,6 +43,4 @@ jobs:
           else
             kamal app logs -n "${{ inputs.lines }}" > app.log 2>&1 || true
           fi
-          cat app.log
-          # Also as annotations (readable through the API) with email addresses masked.
           sed -E 's/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/<email>/g' app.log | tail -n 40 | while IFS= read -r l; do echo "::notice::${l}"; done
