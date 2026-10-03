@@ -12,7 +12,7 @@ export default function Faq() {
   return (
     <>
       <PageHead eyebrow="Questions" title="Straight answers." intro="Can't find yours? Ask us on X or LinkedIn — we answer every question in public." />
-      <Section raised>
+      <Section tone="white">
         <div>
           {FAQ_GROUPS.map((g) => (
             <div key={g.title} className="s-faq-group s-split">

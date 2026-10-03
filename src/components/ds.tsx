@@ -45,12 +45,12 @@ export function Button({
 export type Status = "live" | "voting" | "succeeded" | "completed" | "verified" | "pending" | "imported" | "needs-review" | "frozen" | "failed" | "rejected";
 const STATUS: Record<Status, [string, string, string]> = {
   live: ["ch-chip-live", "●", "Raising"],
-  voting: ["ch-chip-voting", "◐", "Donors reviewing"],
-  succeeded: ["ch-chip-solid", "✓", "Goal reached"],
-  completed: ["ch-chip-solid", "✓", "Completed"],
-  verified: ["ch-chip-solid", "✓", "Verified"],
-  pending: ["ch-chip-outline", "○", "In review"],
-  imported: ["ch-chip-outline", "○", "Not on CHERR.IO yet"],
+  voting: ["ch-chip-warning", "◐", "Donors reviewing"],
+  succeeded: ["ch-chip-success", "✓", "Goal reached"],
+  completed: ["ch-chip-success", "✓", "Completed"],
+  verified: ["ch-chip-success", "✓", "Verified"],
+  pending: ["ch-chip-warning", "◐", "In review"],
+  imported: ["ch-chip-outline ch-chip-muted", "○", "Not on CHERR.IO yet"],
   "needs-review": ["ch-chip-hatch", "!", "Team reviewing"],
   frozen: ["ch-chip-hatch-accent", "‖", "Paused"],
   failed: ["ch-chip-danger", "✕", "Unsuccessful"],

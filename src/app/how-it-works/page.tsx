@@ -24,7 +24,7 @@ export default function HowItWorks() {
     <>
       <PageHead eyebrow="How it works" title="From your card to the hospital invoice." intro="CHERR.IO puts every donation in a locked account and lets donors decide when it is paid out. Here is the whole journey, step by step." />
 
-      <Section raised label="Step by step">
+      <Section tone="tint" label="Step by step">
         <ol className="s-grid-3" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}>
           {STEPS.map((s, i) => (
             <li key={s.t} className="s-box">
@@ -36,7 +36,7 @@ export default function HowItWorks() {
         </ol>
       </Section>
 
-      <Section id="payout">
+      <Section id="payout" tone="white">
         <SectionTitle eyebrow="Two ways to pay out" title="Trust is earned, campaign by campaign." />
         <div className="s-grid-2">
           <article className="s-box">
@@ -68,7 +68,7 @@ export default function HowItWorks() {
         </div>
       </Section>
 
-      <Section raised>
+      <Section tone="dark">
         <SectionTitle eyebrow="Safety" title="Nobody can run off with the money." aside="Not the fundraiser, not a hacker, not us." />
         <div className="s-grid-3">
           <div className="s-box">

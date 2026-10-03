@@ -21,7 +21,7 @@ export default function Cherrions() {
     <>
       <PageHead eyebrow="Cherrions" title="The people who keep giving honest." intro="Everyone with a CHERR.IO account is a Cherrion. Together, Cherrions do the checking that a charity platform would normally leave to a back office." />
 
-      <Section raised>
+      <Section tone="tint">
         <SectionTitle eyebrow="What you can do" title="More than a donate button." />
         <div className="s-grid-3">
           {ACTIONS.map(([t, d]) => (
@@ -33,7 +33,7 @@ export default function Cherrions() {
         </div>
       </Section>
 
-      <Section>
+      <Section tone="white">
         <div className="s-split">
           <div className="s-col-narrow s-stack-md">
             <span className="ch-label s-eyebrow">Proof of Charity</span>

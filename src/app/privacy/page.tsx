@@ -12,7 +12,7 @@ export default function Privacy() {
   return (
     <>
       <PageHead eyebrow="Privacy" title="Privacy notice" intro="This notice covers this website and the launch waitlist. The platform itself will publish its own privacy notice at launch." />
-      <Section raised>
+      <Section tone="white">
         <div className="s-prose">
           <p className="s-muted">Last updated: 3 October 2026</p>
           <h2>Who is responsible</h2>

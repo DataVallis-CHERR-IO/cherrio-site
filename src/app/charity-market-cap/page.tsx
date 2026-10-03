@@ -26,7 +26,7 @@ export default function CharityMarketCap() {
         </div>
       </PageHead>
 
-      <Section raised>
+      <Section tone="tint">
         <div className="s-split s-center">
           <div className="s-col-wide s-stack-md">
             <span className="ch-label s-eyebrow">Two kinds of listing</span>
@@ -51,7 +51,7 @@ export default function CharityMarketCap() {
         </div>
       </Section>
 
-      <Section id="methodology">
+      <Section id="methodology" tone="white">
         <SectionTitle eyebrow="Methodology · Trust Score v1" title="The formula, in full." aside="Each part is scored from 0 to 1, weighted, and added up to a score from 0 to 100. Every score is stored with its formula version." />
         <div className="s-table-wrap">
           <table className="s-table">

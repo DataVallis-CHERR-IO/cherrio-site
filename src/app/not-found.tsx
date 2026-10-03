@@ -2,7 +2,7 @@ import { ButtonLink } from "@/components/ds";
 
 export default function NotFound() {
   return (
-    <section className="s-section">
+    <section className="s-section s-tone-ground">
       <div className="s-wrap s-stack-lg" style={{ paddingTop: 96, paddingBottom: 96 }}>
         <span className="ch-label s-mono" style={{ fontWeight: 500 }}>
           404

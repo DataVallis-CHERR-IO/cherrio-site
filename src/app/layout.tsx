@@ -66,7 +66,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
+    <html lang="en" data-theme="light" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <head>
         {/* Order matters: consent defaults → CookieYes banner → Google tag. */}
         <script dangerouslySetInnerHTML={{ __html: CONSENT_DEFAULT }} />

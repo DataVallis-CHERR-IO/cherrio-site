@@ -12,7 +12,7 @@ export default function Terms() {
   return (
     <>
       <PageHead eyebrow="Terms" title="Terms of use" intro="The full terms of use for donating and fundraising will be published when the platform opens." />
-      <Section raised>
+      <Section tone="white">
         <div className="s-prose">
           <p>This website is operated by {SITE.operator}, {SITE.operatorAddress}. It describes how the CHERR.IO platform is designed to work. The platform is not open yet: no donations can be made and no campaigns are live.</p>
           <p>Rules, figures and features described on this website may change before launch. The version published at launch is the one that counts. Campaigns, organisations, amounts and transactions shown on this website are examples, unless stated otherwise.</p>

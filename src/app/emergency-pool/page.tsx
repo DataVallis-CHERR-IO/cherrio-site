@@ -13,7 +13,7 @@ export default function EmergencyPool() {
     <>
       <PageHead eyebrow="Emergency Pool" title="No donation is wasted." intro="When a campaign falls short, its donors don't have to take the money back. They can pass it to a shared pool that helps the next urgent case — and only its contributors decide where it goes." />
 
-      <Section raised>
+      <Section tone="tint">
         <SectionTitle eyebrow="Where the money comes from" title="Three ways in." />
         <div className="s-grid-3">
           <div className="s-box">
@@ -42,7 +42,7 @@ export default function EmergencyPool() {
         </div>
       </Section>
 
-      <Section>
+      <Section tone="white">
         <div className="s-split">
           <div className="s-col-narrow s-stack-md">
             <span className="ch-label s-eyebrow">Where the money goes</span>

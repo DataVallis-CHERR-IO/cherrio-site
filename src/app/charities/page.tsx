@@ -17,7 +17,7 @@ export default function Charities() {
         </div>
       </PageHead>
 
-      <Section raised>
+      <Section tone="tint">
         <SectionTitle eyebrow="Who can raise money" title="Organisations and individuals." />
         <div className="s-grid-2">
           <article className="s-box">
@@ -43,7 +43,7 @@ export default function Charities() {
         </div>
       </Section>
 
-      <Section>
+      <Section tone="white">
         <SectionTitle eyebrow="Step by step" title="From application to payout." />
         <ol className="s-grid-3" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
           {[
@@ -63,7 +63,7 @@ export default function Charities() {
         </ol>
       </Section>
 
-      <Section raised>
+      <Section tone="dark">
         <div className="s-split s-center">
           <div className="s-col-narrow s-stack-sm">
             <span className="ch-label s-eyebrow">Pricing</span>

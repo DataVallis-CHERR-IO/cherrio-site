@@ -9,14 +9,14 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="s-section" id="waitlist">
+      <section className="s-section s-tone-ground" id="waitlist">
         <div className="s-wrap s-hero-inner">
           <div className="s-hero-text">
             <div className="s-row" style={{ gap: 8 }}>
               <StatusChip status="pending">Opening soon</StatusChip>
-              <span className="ch-label s-muted">Transparent giving, rebuilt for 2026</span>
+              <span className="ch-label s-eyebrow">Giving you can verify</span>
             </div>
-            <h1 className="s-display-1">Every cent, on the record</h1>
+            <h1 className="s-display-1">Every cent, on the record.</h1>
             <p className="s-hero-sub">
               Give to people and charities you can check. Your donation waits in a locked account and is released in three steps — only when donors approve the receipts.
             </p>
@@ -34,7 +34,7 @@ export default function Home() {
       </section>
 
       {/* Three promises */}
-      <section className="s-section s-raised" aria-label="Our promises">
+      <section className="s-section s-tone-tint" aria-label="Our promises">
         <div className="s-wrap s-promises">
           <div className="s-promise">
             <span className="ch-label">01</span>
@@ -55,7 +55,7 @@ export default function Home() {
       </section>
 
       {/* How it works */}
-      <Section id="how">
+      <Section id="how" tone="white">
         <SectionTitle eyebrow="How it works" title="Give in a minute. Follow it to the last cent." aside="You don't need to understand blockchains. You just give — the record keeps itself." />
         <ol className="s-grid-3">
           <li className="s-box">
@@ -82,7 +82,7 @@ export default function Home() {
       </Section>
 
       {/* Protection */}
-      <Section id="protection" raised>
+      <Section id="protection" tone="dark">
         <div className="s-split">
           <div className="s-col-narrow s-stack-md">
             <span className="ch-label s-eyebrow">How your money is protected</span>
@@ -105,7 +105,7 @@ export default function Home() {
       </Section>
 
       {/* Charity Market Cap */}
-      <Section id="market-cap">
+      <Section id="market-cap" tone="ground">
         <div className="s-split s-center" style={{ flexWrap: "wrap-reverse" }}>
           <div className="s-col-narrow s-stack-sm" style={{ maxWidth: 460 }}>
             <span className="ch-label s-muted">Example organisation</span>
@@ -127,10 +127,13 @@ export default function Home() {
       </Section>
 
       {/* Audiences */}
-      <Section raised label="Who CHERR.IO is for">
-        <h2 className="s-display-2" style={{ maxWidth: "20ch" }}>
-          For everyone who cares where the money goes.
-        </h2>
+      <Section tone="tint" label="Who CHERR.IO is for">
+        <div className="s-stack-sm">
+          <span className="ch-label s-eyebrow">Who it&apos;s for</span>
+          <h2 className="s-display-2" style={{ maxWidth: "20ch" }}>
+            For everyone who cares where the money goes.
+          </h2>
+        </div>
         <div className="s-grid-3">
           <article className="s-box">
             <span className="ch-label">Donors</span>
@@ -159,12 +162,12 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Emergency Pool — the one cherry block */}
-      <section className="s-cherry" aria-label="Emergency Pool">
+      {/* Emergency Pool */}
+      <section className="s-section s-tone-white" aria-label="Emergency Pool">
         <div className="s-wrap s-cherry-inner">
-          <div className="s-stack-sm" style={{ flex: "1 1 520px" }}>
-            <span className="ch-label">Emergency Pool</span>
-            <h2>No donation is wasted.</h2>
+          <div className="s-stack-md" style={{ flex: "1 1 520px" }}>
+            <span className="ch-label s-eyebrow">Emergency Pool</span>
+            <h2 className="s-display-2">No donation is wasted.</h2>
             <p className="s-lead" style={{ maxWidth: "58ch" }}>
               Money from campaigns that fall short can go to a shared pool. Its donors vote which live campaigns it helps next — and it can only ever go to campaigns on CHERR.IO.
             </p>
@@ -176,12 +179,10 @@ export default function Home() {
       </section>
 
       {/* Proof layer */}
-      <Section id="proof">
+      <Section id="proof" tone="dark">
         <div className="s-section-title">
           <div className="s-stack-sm s-grow">
-            <span className="ch-label s-mono" style={{ fontWeight: 500, letterSpacing: ".04em" }}>
-              #proof
-            </span>
+            <span className="ch-label s-eyebrow">#proof · For sceptics</span>
             <h2 className="s-display-2">Every donation, on the blockchain.</h2>
           </div>
           <p className="s-aside" style={{ fontSize: 16, lineHeight: "24px" }}>
@@ -205,7 +206,7 @@ export default function Home() {
       </Section>
 
       {/* FAQ */}
-      <Section id="faq" raised>
+      <Section id="faq" tone="ground">
         <div className="s-split">
           <div className="s-stack-sm" style={{ flex: "1 1 300px" }}>
             <span className="ch-label s-eyebrow">Questions</span>
