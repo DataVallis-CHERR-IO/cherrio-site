@@ -208,3 +208,14 @@ h1, h2, h3, p { margin: 0; }
 /* Component width overrides for fluid layouts */
 .ch-card, .ch-trust, .ch-ms, .ch-vote { max-width: none; }
 .ch-card { flex: unset; }
+
+/* Text-style button (footer "Cookie settings") */
+.s-linkbtn { all: unset; cursor: pointer; font: inherit; color: var(--band-ink); text-align: left; }
+.s-linkbtn:hover { text-decoration: underline; text-underline-offset: 4px; }
+.s-linkbtn:focus-visible { outline: var(--border-bold) solid var(--cherry-500); outline-offset: 3px; }
+
+/* CookieYes audit table on /privacy — keep it inside the page width */
+.cky-audit-table-element { overflow-x: auto; }
+.s-inline-btn { all: unset; cursor: pointer; font: inherit; color: var(--ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.s-inline-btn:hover { color: var(--accent-text); }
+.s-inline-btn:focus-visible { outline: var(--border-bold) solid var(--focus); outline-offset: 3px; }

@@ -14,7 +14,7 @@ export default function Privacy() {
       <PageHead eyebrow="Privacy" title="Privacy notice" intro="This notice covers this website and the launch waitlist. The platform itself will publish its own privacy notice at launch." />
       <Section raised>
         <div className="s-prose">
-          <p className="s-muted">Last updated: 2 October 2026</p>
+          <p className="s-muted">Last updated: 3 October 2026</p>
           <h2>Who is responsible</h2>
           <p>
             {SITE.operator}, {SITE.operatorAddress} (&quot;we&quot;) is the controller of the personal data described here. Contact: <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
@@ -43,10 +43,34 @@ export default function Privacy() {
                 <td>Our legitimate interest (Art. 6(1)(f) GDPR)</td>
                 <td>Up to 30 days</td>
               </tr>
+              <tr>
+                <td>Usage data collected by Google Analytics (pages visited, approximate location, device and browser, cookie identifiers)</td>
+                <td>Understanding how visitors use the website so we can improve it</td>
+                <td>Your consent (Art. 6(1)(a) GDPR)</td>
+                <td>14 months</td>
+              </tr>
+              <tr>
+                <td>Your cookie choices</td>
+                <td>Remembering which cookies you accepted or rejected</td>
+                <td>Legal obligation (Art. 6(1)(c) GDPR)</td>
+                <td>12 months</td>
+              </tr>
             </tbody>
           </table>
           </div>
-          <p>This website uses no advertising or analytics cookies and loads no tracking scripts. Fonts are served from our own server.</p>
+          <h2>Cookies</h2>
+          <p>
+            Strictly necessary cookies keep the website working and remember your cookie choices. Analytics cookies (Google Analytics) are set only after you accept them in the cookie banner; until then Google receives no cookie identifiers. We use no advertising cookies. Fonts are served from our own server.
+          </p>
+          <p>
+            You can change or withdraw your choice at any time:{" "}
+            <button type="button" className="cky-banner-element s-inline-btn">
+              open cookie settings
+            </button>
+            .
+          </p>
+          <p>The table below lists the cookies currently used on this website. It is kept up to date automatically by our consent tool, CookieYes.</p>
+          <div className="cky-audit-table-element" />
           <h2>Who processes your data for us</h2>
           <ul>
             <li>
@@ -54,6 +78,12 @@ export default function Privacy() {
             </li>
             <li>
               <strong>Hetzner Online GmbH</strong> (Germany) — hosts this website.
+            </li>
+            <li>
+              <strong>Google Ireland Ltd.</strong> — Google Analytics, only with your consent. Data may be transferred to the United States under the EU–US Data Privacy Framework.
+            </li>
+            <li>
+              <strong>CookieYes Limited</strong> (United Kingdom) — shows the cookie banner and stores your consent record.
             </li>
           </ul>
           <h2>Your rights</h2>

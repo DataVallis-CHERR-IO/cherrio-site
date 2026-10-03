@@ -77,6 +77,10 @@ export function Footer() {
               <Link href="/about">About</Link>
               <Link href="/privacy">Privacy</Link>
               <Link href="/terms">Terms</Link>
+              {/* CookieYes reopens its preference centre on any element with this class. */}
+              <button type="button" className="cky-banner-element s-linkbtn">
+                Cookie settings
+              </button>
               <a href={SITE.x} target="_blank" rel="noreferrer">
                 X ↗
               </a>

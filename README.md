@@ -6,6 +6,7 @@ The public site on **https://cherr.io** (pre-launch waitlist + explainer pages).
 - Next.js 15 (App Router), TypeScript strict, no Tailwind — plain CSS on the CHERR.IO design-system tokens.
 - `src/styles/tokens.css` and `components.css` are copied from `web3-platform/packages/ui` (same `ch-` classes). Update them from there, never by hand.
 - Fonts ship in `src/fonts` (OFL, from Fontsource) — no requests to Google at build or run time.
+- Cookies: CookieYes banner + Google Analytics (`G-JPNKGW05DE`) with Consent Mode v2 — analytics is denied until the visitor accepts (`src/app/layout.tsx`). `/privacy` embeds the CookieYes cookie table (`.cky-audit-table-element`); the footer "Cookie settings" button reopens the banner.
 - English only. Copy lives in the page files; FAQ in `src/lib/faq.tsx`; example figures (always labelled "Example") in `src/lib/examples.ts`.
 
 ## Pages
