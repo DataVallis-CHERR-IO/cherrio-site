@@ -16,7 +16,7 @@ export default function Home() {
               <StatusChip status="pending">Opening soon</StatusChip>
               <span className="ch-label s-muted">Transparent giving, rebuilt for 2026</span>
             </div>
-            <h1 className="s-display-1">Every euro, on the record</h1>
+            <h1 className="s-display-1">Every cent, on the record</h1>
             <p className="s-hero-sub">
               Give to people and charities you can check. Your donation waits in a locked account and is released in three steps — only when donors approve the receipts.
             </p>
@@ -134,7 +134,7 @@ export default function Home() {
         <div className="s-grid-3">
           <article className="s-box">
             <span className="ch-label">Donors</span>
-            <h3 className="s-h2">Know where every euro went.</h3>
+            <h3 className="s-h2">Know where every cent went.</h3>
             <p>Give by card, follow the campaign, vote on the receipts. If it doesn&apos;t work out, your money comes back.</p>
             <Link className="s-arrow-link" href="/how-it-works">
               How giving works →

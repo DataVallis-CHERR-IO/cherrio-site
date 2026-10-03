@@ -56,7 +56,7 @@ export function Footer() {
           <div className="s-footer-brand">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/brand/cherrio-wordmark-white.svg" alt="CHERR.IO" width={132} height={50} />
-            <p>Transparent charitable giving. Every euro locked, released in steps and on the record.</p>
+            <p>Transparent charitable giving. Every cent locked, released in steps and on the record.</p>
           </div>
           <nav aria-label="Footer" className="s-footer-nav">
             <div>

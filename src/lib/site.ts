@@ -2,7 +2,7 @@ export const SITE_URL = (process.env.SITE_URL ?? "https://cherr.io").replace(/\/
 
 export const SITE = {
   name: "CHERR.IO",
-  tagline: "Every euro, on the record",
+  tagline: "Every cent, on the record",
   description:
     "Transparent charitable giving. Your donation waits in a locked account and is released in three steps — only when donors approve the receipts.",
   operator: "Data Vallis d.o.o.",
