@@ -16,6 +16,14 @@ export default function About() {
         <div className="s-prose">
           <p>CHERR.IO started in 2018 with a simple question: why should a donor have to take a charity&apos;s word for it? The first version proved that people want to see where their money goes. Since then the tools have caught up — cheap, fast public ledgers, card payments that work without crypto knowledge, and identity checks that respect privacy.</p>
           <p>So we rebuilt CHERR.IO from scratch. Donations sit in a locked account per campaign, payouts happen in steps that donors approve, and every charity earns a public Trust Score from its real record. Everything a donor needs is in plain euros; everything a sceptic needs is one click away on the public record.</p>
+          <h2>Whitepaper</h2>
+          <p>
+            The full design — campaign lifecycle, payouts and fraud protection, Emergency Pool, Trust Score, fees and the CHR token — is in our{" "}
+            <a href="/whitepaper" target="_blank" rel="noopener">
+              whitepaper v2.0 (PDF, October 2026)
+            </a>
+            . It replaces the 2018 whitepaper.
+          </p>
           <h2>Who we are</h2>
           <p>
             CHERR.IO is operated by <strong>{SITE.operator}</strong>, {SITE.operatorAddress}. We are a small team of engineers who build the platform in the open: the rules for every campaign are written in code that anyone can inspect, and every movement of money is public.

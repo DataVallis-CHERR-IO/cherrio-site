@@ -214,6 +214,9 @@ export default function Home() {
             <Link className="s-arrow-link" href="/faq" style={{ marginTop: 12 }}>
               All questions →
             </Link>
+            <a className="s-arrow-link" href="/whitepaper" target="_blank" rel="noopener">
+              Read the whitepaper (PDF) ↗
+            </a>
           </div>
           <div className="s-col-wide">
             <FaqList items={FAQ_HOME} />

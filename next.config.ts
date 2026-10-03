@@ -11,6 +11,10 @@ const securityHeaders = [
 const config: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
+  // Stable link for the latest whitepaper; versioned files live in public/whitepaper/.
+  async redirects() {
+    return [{ source: "/whitepaper", destination: "/whitepaper/cherrio-whitepaper-v2.0.pdf", permanent: false }];
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

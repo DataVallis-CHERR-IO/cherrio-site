@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { NAV, SITE } from "@/lib/site";
+import { NAV, SITE, WHITEPAPER } from "@/lib/site";
 import { ButtonLink } from "./ds";
 import { WaitlistForm } from "./WaitlistForm";
 import { NavLinks } from "./NavLinks";
@@ -64,6 +64,9 @@ export function Footer() {
               <Link href="/charity-market-cap">Charity Market Cap</Link>
               <Link href="/emergency-pool">Emergency Pool</Link>
               <Link href="/faq">FAQ</Link>
+              <a href={WHITEPAPER.href} target="_blank" rel="noopener">
+                Whitepaper (PDF) ↗
+              </a>
             </div>
             <div>
               <span className="ch-label">Join</span>

@@ -13,6 +13,8 @@ export const SITE = {
   linkedin: "https://www.linkedin.com/company/cherrio",
 } as const;
 
+export const WHITEPAPER = { href: "/whitepaper", file: "/whitepaper/cherrio-whitepaper-v2.0.pdf", label: "Whitepaper v2.0 (PDF)" } as const;
+
 export const NAV = [
   { href: "/how-it-works", label: "How it works" },
   { href: "/charity-market-cap", label: "Charity Market Cap" },

@@ -11,6 +11,8 @@ The public site on **https://cherr.io** (pre-launch waitlist + explainer pages).
 
 ## Pages
 
+`/whitepaper` → latest whitepaper PDF (`public/whitepaper/cherrio-whitepaper-v2.0.pdf`), linked in the footer, home FAQ and About.
+
 `/` · `/how-it-works` · `/charity-market-cap` · `/emergency-pool` · `/charities` · `/cherrions` · `/faq` · `/about` · `/privacy` · `/terms` · 404.
 `www.cherr.io` → `cherr.io` (308, `src/middleware.ts`).
 
