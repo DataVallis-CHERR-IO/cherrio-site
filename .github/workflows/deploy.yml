@@ -83,7 +83,7 @@ jobs:
           echo "$HEALTH"
           echo "$HEALTH" | grep -q '"status":"ok"'
           echo "$HEALTH" | grep -q '"sha":"${{ github.sha }}"'
-          for p in / /how-it-works /charity-market-cap /emergency-pool /charities /cherrions /faq /about /privacy /terms /sitemap.xml /whitepaper/cherrio-whitepaper-v2.0.pdf; do
+          for p in / /how-it-works /charity-market-cap /emergency-pool /charities /cherrions /faq /about /privacy /terms /sitemap.xml /whitepaper/cherrio-whitepaper-v2.0.pdf /og/cherrio-og-v1.png; do
             curl -sf -o /dev/null "https://${HOST}${p}" && echo "200 ${p}"
           done
           test "$(curl -s -o /dev/null -w '%{http_code}' https://www.${HOST}/)" = "308"

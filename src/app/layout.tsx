@@ -52,8 +52,15 @@ export const metadata: Metadata = {
   title: { default: `${SITE.name} — ${SITE.tagline}`, template: `%s · ${SITE.name}` },
   description: SITE.description,
   applicationName: SITE.name,
-  openGraph: { type: "website", siteName: SITE.name, locale: "en_GB", url: SITE_URL },
-  twitter: { card: "summary_large_image", site: "@CherrioPlatform" },
+  // Share image: versioned file name, so a new image busts X/LinkedIn/Facebook caches.
+  openGraph: {
+    type: "website",
+    siteName: SITE.name,
+    locale: "en_GB",
+    url: SITE_URL,
+    images: [{ url: "/og/cherrio-og-v1.png", width: 1200, height: 630, alt: "CHERR.IO — Every cent, on the record. Example: €12,000 raised, released in 3 steps." }],
+  },
+  twitter: { card: "summary_large_image", site: "@CherrioPlatform", images: ["/og/cherrio-og-v1.png"] },
   alternates: { canonical: "/" },
 };
 
