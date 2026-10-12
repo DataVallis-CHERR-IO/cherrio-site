@@ -1,7 +1,7 @@
 # cherr.io — marketing site
 
 The public site on **https://cherr.io** (pre-launch waitlist + explainer pages). The platform itself lives in
-[`web3-platform`](https://github.com/DataVallis-CHERR-IO/web3-platform) and runs on `app.cherr.io` (prod) / `dev.cherr.io`.
+[`web3-platform`](https://github.com/DataVallis-CHERR-IO/web3-platform) and runs on `app.cherr.io` (prod) / `testnet.cherr.io` (public testnet beta, formerly `dev.cherr.io`).
 
 - Next.js 15 (App Router), TypeScript strict, no Tailwind — plain CSS on the CHERR.IO design-system tokens.
 - `src/styles/tokens.css` and `components.css` are copied from `web3-platform/packages/ui` (same `ch-` classes). Update them from there, never by hand.
@@ -10,6 +10,8 @@ The public site on **https://cherr.io** (pre-launch waitlist + explainer pages).
 - English only. Copy lives in the page files; FAQ in `src/lib/faq.tsx`; example figures (always labelled "Example") in `src/lib/examples.ts`.
 
 ## Pages
+
+Testnet link (`TESTNET` in `src/lib/site.ts`, https://testnet.cherr.io/en): header button (≥ 1280 px), mobile menu, a line under the hero waitlist form, footer "Platform". The waitlist stays for the real launch.
 
 `/whitepaper` → latest whitepaper PDF (`public/whitepaper/cherrio-whitepaper-v2.0.pdf`), linked in the footer, home FAQ and About.
 

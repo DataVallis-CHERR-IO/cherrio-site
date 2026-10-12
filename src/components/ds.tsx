@@ -28,6 +28,15 @@ export function ButtonLink({ href, children, ...s }: BtnStyle & { href: string; 
   );
 }
 
+/** Button-styled link to another site, opened in a new tab. */
+export function ExternalButtonLink({ href, children, ...s }: BtnStyle & { href: string; children: ReactNode }) {
+  return (
+    <a href={href} target="_blank" rel="noopener" className={btnClass(s)} style={{ textDecoration: "none" }}>
+      {children}
+    </a>
+  );
+}
+
 export function Button({
   children,
   type = "button",
