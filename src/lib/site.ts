@@ -13,6 +13,9 @@ export const SITE = {
   linkedin: "https://www.linkedin.com/company/cherrio",
 } as const;
 
+/** Public testnet beta of the platform (Polygon Amoy, test money only). Waitlist stays for the real launch. */
+export const TESTNET = { href: "https://testnet.cherr.io/en", label: "Try the testnet" } as const;
+
 export const WHITEPAPER = { href: "/whitepaper", file: "/whitepaper/cherrio-whitepaper-v2.0.pdf", label: "Whitepaper v2.0 (PDF)" } as const;
 
 export const NAV = [

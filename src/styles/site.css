@@ -93,12 +93,17 @@ h1, h2, h3, p { margin: 0; }
 .s-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; }
 .s-navlink { font-size: 14px; font-weight: 700; letter-spacing: .02em; text-decoration: none; }
 .s-navlink:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.s-header-cta { display: flex; align-items: center; gap: 8px; }
 .s-menu { display: none; position: relative; }
 .s-menu summary { list-style: none; height: 44px; }
 .s-menu summary::-webkit-details-marker { display: none; }
 .s-menu-panel { position: absolute; right: 0; top: calc(100% + 12px); width: min(320px, calc(100vw - 32px)); background: var(--surface-raised); border: var(--border-bold) solid var(--line); box-shadow: var(--shadow-hard); padding: 16px; display: grid; gap: 4px; }
 .s-menu-link { display: block; padding: 12px 4px; font-weight: 700; text-decoration: none; border-bottom: var(--border-hair) solid var(--line-soft); }
 .s-menu-panel .ch-btn { margin-top: 12px; }
+/* Room for both buttons only on wider screens; the testnet link is also in the hero, menu and footer. */
+@media (max-width: 1279px) {
+  .s-header-testnet { display: none; }
+}
 @media (max-width: 1080px) {
   .s-nav, .s-header-cta { display: none; }
   .s-menu { display: block; }

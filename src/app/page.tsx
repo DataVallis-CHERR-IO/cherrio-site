@@ -4,6 +4,7 @@ import { Address, ButtonLink, CampaignCard, LedgerTable, MilestoneTrack, ProofLi
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { exampleCampaign, exampleContract, exampleLedger, exampleTranches, exampleTrust, exampleVote } from "@/lib/examples";
 import { FAQ_HOME, FaqList } from "@/lib/faq";
+import { TESTNET } from "@/lib/site";
 
 export default function Home() {
   return (
@@ -21,6 +22,13 @@ export default function Home() {
               Give to people and charities you can check. Your donation waits in a locked account and is released in three steps — only when donors approve the receipts.
             </p>
             <WaitlistForm source="home-hero" />
+            <p className="s-note">
+              Public testnet is open:{" "}
+              <a href={TESTNET.href} target="_blank" rel="noopener">
+                {TESTNET.label} ↗
+              </a>{" "}
+              with test money — nothing real is spent.
+            </p>
             <div className="s-row">
               <ProofLink href="#proof">See how the proof works</ProofLink>
               <span className="s-note">Pay by card. No crypto knowledge needed.</span>

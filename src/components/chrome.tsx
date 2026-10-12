@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { NAV, SITE, WHITEPAPER } from "@/lib/site";
-import { ButtonLink } from "./ds";
+import { NAV, SITE, TESTNET, WHITEPAPER } from "@/lib/site";
+import { ButtonLink, ExternalButtonLink } from "./ds";
 import { WaitlistForm } from "./WaitlistForm";
 import { NavLinks } from "./NavLinks";
 
@@ -19,6 +19,9 @@ export function Header() {
           <NavLinks />
         </nav>
         <div className="s-header-cta">
+          <ExternalButtonLink href={TESTNET.href} variant="ghost" className="s-header-testnet">
+            {TESTNET.label} ↗
+          </ExternalButtonLink>
           <ButtonLink href="/#waitlist">Get early access</ButtonLink>
         </div>
         <details className="s-menu">
@@ -37,6 +40,9 @@ export function Header() {
             <Link href="/about" className="s-menu-link">
               About
             </Link>
+            <a href={TESTNET.href} target="_blank" rel="noopener" className="s-menu-link">
+              {TESTNET.label} ↗
+            </a>
             <ButtonLink href="/#waitlist" variant="primary" block>
               Get early access
             </ButtonLink>
@@ -64,6 +70,9 @@ export function Footer() {
               <Link href="/charity-market-cap">Charity Market Cap</Link>
               <Link href="/emergency-pool">Emergency Pool</Link>
               <Link href="/faq">FAQ</Link>
+              <a href={TESTNET.href} target="_blank" rel="noopener">
+                Testnet beta ↗
+              </a>
               <a href={WHITEPAPER.href} target="_blank" rel="noopener">
                 Whitepaper (PDF) ↗
               </a>
